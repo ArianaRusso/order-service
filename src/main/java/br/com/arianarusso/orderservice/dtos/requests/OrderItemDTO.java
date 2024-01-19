@@ -1,10 +1,11 @@
 package br.com.arianarusso.orderservice.dtos.requests;
 
-import java.math.BigDecimal;
+import br.com.arianarusso.orderservice.model.Order;
+
 
 public record OrderItemDTO (
-      String product,
+      String description,
       Integer quantity,
-      BigDecimal price
+      Order order
 ){
 }

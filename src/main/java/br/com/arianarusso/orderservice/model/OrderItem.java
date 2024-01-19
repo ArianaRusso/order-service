@@ -3,6 +3,7 @@ package br.com.arianarusso.orderservice.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,11 +24,13 @@ public class OrderItem {
     private UUID id;
 
     @NotBlank
-    private String product;
+    private String description;
 
     @NotNull
+    @Positive
     private Integer quantity;
 
-    @NotNull
-    private BigDecimal price;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

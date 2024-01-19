@@ -20,16 +20,12 @@ import java.util.UUID;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @NotBlank
-    private String customer;
-
-    @OneToMany
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<OrderItem> items;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 }
